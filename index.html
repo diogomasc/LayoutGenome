@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LayoutGenome | O DNA do Design Perfeito para a sua IA</title>
+    
+    <!-- Configuração de fontes seguindo as referências de design tech premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🧬</span>
+                <span class="logo-text">PixelGenome</span>
+            </a>
+            <div class="nav-links">
+                <a href="#como-funciona">Como Funciona</a>
+                <a href="#diferenciais">Diferenciais</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <a href="#pricing" class="btn btn-outline">Testar Agora</a>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge-custom">
+                    <span class="badge-dot"></span>
+                    Extrator Inteligente de Design Systems para IAs
+                </div>
+                
+                <h1 class="hero-title">
+                    Dê o <span class="text-gradient">DNA do design perfeito</span><br>
+                    para a sua IA.
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Pare de brigar com prompts que geram sites genéricos. Extraia HTML, CSS e Motion de qualquer site de referência e crie um Design System perfeito para o Cursor e Lovable consumirem.
+                </p>
+                
+                <div class="hero-action">
+                    <form class="extract-form">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                            <input type="url" placeholder="Cole a URL de um site incrível aqui..." required class="url-input">
+                        </div>
+                        <button type="submit" class="btn btn-primary glow-effect">Extrair DNA Agora</button>
+                    </form>
+                    <div class="action-meta">
+                        <span>Sem necessidade de cartão de crédito</span>
+                        <span class="dot-separator">•</span>
+                        <span>Funciona em qualquer URL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <div class="window-title">layout-genome.ts</div>
+                    </div>
+                    <div class="window-body">
+<pre><code><span class="keyword">import</span> { <span class="variable">extractDNA</span> } <span class="keyword">from</span> <span class="string">'@pixelgenome/core'</span>;
+<span class="keyword">import</span> { <span class="variable">generateContext</span> } <span class="keyword">from</span> <span class="string">'@pixelgenome/adapters'</span>;
+
+<span class="comment">// 1. Alvo: Um site premium com motion incrível</span>
+<span class="keyword">const</span> <span class="variable">targetUrl</span> = <span class="string">'https://site-referencia.com'</span>;
+
+<span class="comment">// 2. Extraindo tipografia, motion e componentes reais</span>
+<span class="keyword">const</span> <span class="variable">designSystem</span> = <span class="keyword">await</span> <span class="function">extractDNA</span>(<span class="variable">targetUrl</span>, {
+  <span class="property">deepParse</span>: <span class="boolean">true</span>,
+  <span class="property">captureMotion</span>: <span class="boolean">true</span> 
+});
+
+<span class="comment">// 3. Gerando contexto pronto para Cursor ou Lovable</span>
+<span class="function">generateContext</span>(<span class="variable">designSystem</span>, <span class="string">'./.cursor/design-system.html'</span>);
+<span class="comment">// -> Mágica pronta. Sua IA agora tem bom gosto.</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Sinais de Confiança -->
+    <section class="trust-signals">
+        <div class="container trust-container">
+            <p class="trust-title">Perfeitamente integrado com os melhores ecossistemas de código IA:</p>
+            <div class="logos-row">
+                <div class="logo-item">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m11.23 6.94 8.73-3.64c.83-.35 1.63.45 1.28 1.28l-3.64 8.73c-.27.65-.96 1.04-1.65.92l-3.32-.55c-.27-.05-.53.07-.68.29l-2.07 3.12c-.44.66-1.46.56-1.76-.17L6.46 11.2a1.5 1.5 0 0 1 .15-1.5l3.12-2.07c.22-.15.34-.41.29-.68l-.55-3.32c-.12-.69.27-1.38.92-1.65l3.64-8.73Z"></path></svg>
+                    <span>Cursor</span>
+                </div>
+                <div class="logo-item">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span>Windsurf</span>
+                </div>
+                <div class="logo-item">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    <span>Lovable</span>
+                </div>
+                <div class="logo-item">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <span>GitHub Copilot</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. O Problema vs A Solução -->
+    <section class="problem-solution" id="problema">
+        <div class="container">
+            <div class="section-header">
+                <h2>O fim dos sites com <span class="text-gradient-red">"cara de IA"</span></h2>
+                <p>Veja a diferença entre depender apenas de descrições em texto e fornecer o DNA visual real.</p>
+            </div>
+            
+            <div class="comparison-grid">
+                <!-- Problema -->
+                <div class="card problem-card">
+                    <div class="card-tag tag-problem">A Dor (IAs Normais)</div>
+                    <h3>Prompts e Imagens Soltas</h3>
+                    <ul class="feature-list problem-list">
+                        <li><span class="icon">❌</span> Horas perdidas refazendo prompts.</li>
+                        <li><span class="icon">❌</span> Sites estáticos, sem micro-interações ou motion.</li>
+                        <li><span class="icon">❌</span> Fontes padrão quebradas e alinhamentos inconsistentes.</li>
+                        <li><span class="icon">❌</span> Aparência de template barato e genérico.</li>
+                    </ul>
+                    <div class="visual-example bad-example">
+                        <div class="skeleton-header"></div>
+                        <div class="skeleton-block"></div>
+                        <div class="skeleton-btn"></div>
+                    </div>
+                </div>
+
+                <!-- Solução -->
+                <div class="card solution-card glow-border">
+                    <div class="card-tag tag-solution">O Ganho (LayoutGenome)</div>
+                    <h3>Design System Extraído</h4>
+                    <ul class="feature-list solution-list">
+                        <li><span class="icon">✅</span> Qualidade de estúdio desde a primeira geração.</li>
+                        <li><span class="icon">✅</span> Motion, hovers e transições 100% preservados.</li>
+                        <li><span class="icon">✅</span> Variáveis, fontes e componentes consistentes.</li>
+                        <li><span class="icon">✅</span> Velocidade extrema no Cursor/Lovable.</li>
+                    </ul>
+                    <div class="visual-example good-example">
+                        <div class="mock-hero">
+                            <div class="mock-title"></div>
+                            <div class="mock-subtitle"></div>
+                            <div class="mock-btn glowing"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Como Funciona -->
+    <section class="how-it-works" id="como-funciona">
+        <div class="container">
+            <div class="section-header center">
+                <h2>Como Funciona</h2>
+                <p>Do link de referência ao código final em 3 passos simples.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                    </div>
+                    <h3>Cole a URL</h3>
+                    <p>Cole a URL de referência. O LayoutGenome acessa a página e extrai os computed styles, assets e a hierarquia do código real em segundos.</p>
+                </div>
+                
+                <div class="step-connector"></div>
+                
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    </div>
+                    <h3>Genoma Gerado</h3>
+                    <p>Nossa engine processa tudo e gera um Design System vivo: documentação completa em HTML com tipografia, botões e até galeria de motion.</p>
+                </div>
+
+                <div class="step-connector"></div>
+
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    </div>
+                    <h3>IA Codificando</h3>
+                    <p>Jogue o documento no contexto do Cursor, Windsurf ou Lovable. Peça para a IA construir seu site usando aquelas regras e veja a mágica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria Asimov-like (Framer Gallery Container Clone) -->
+    <section class="gallery-showcase">
+        <!-- O container deve ocupar a largura total, simular o estilo de portfólio horizontal -->
+        <div class="gallery-header">
+            <h2>Resultados de Alta Fidelidade</h2>
+            <p>Construídos através de IAs em uma fração do tempo.</p>
+        </div>
+        
+        <div class="framer-gallery-container full-width">
+            <div class="gallery-column col-1">
+                <div class="gallery-card">
+                <img alt="F1" decoding="async" src="assets/F1_63accf30e3bc.webp"><video loop="" muted="" playsinline="" src="assets/V01-F1_33a69b475e14.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V03-S_11c8557c5dbd.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img alt="F7" decoding="async" src="assets/F7-O_92d54c9d3b42.webp"><video loop="" muted="" playsinline="" src="assets/V07-F7_9444885dd491.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F1_63accf30e3bc.webp"><video loop="" muted="" playsinline="" src="assets/V01-F1_33a69b475e14.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V03-S_11c8557c5dbd.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F7-O_92d54c9d3b42.webp"><video loop="" muted="" playsinline="" src="assets/V07-F7_9444885dd491.webm"></video>
+                </div>
+            </div>
+            <div class="gallery-column col-2">
+                <div class="gallery-card">
+                <img alt="F6" decoding="async" src="assets/F6-P_56ab44614a86.webp"><video loop="" muted="" playsinline="" src="assets/V06-F6_750cbe99ff2e.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V10-S_1fd95d20fb0e.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img alt="F2" decoding="async" src="assets/F2-_59a111c69da1.webp"><video loop="" muted="" playsinline="" src="assets/V02-F2_3b571a346d97.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F6-P_56ab44614a86.webp"><video loop="" muted="" playsinline="" src="assets/V06-F6_750cbe99ff2e.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V10-S_1fd95d20fb0e.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F2-_59a111c69da1.webp"><video loop="" muted="" playsinline="" src="assets/V02-F2_3b571a346d97.webm"></video>
+                </div>
+            </div>
+            <div class="gallery-column col-3">
+                <div class="gallery-card">
+                <img alt="F3" decoding="async" src="assets/F3-C_a8639abdb12c.webp"><video loop="" muted="" playsinline="" src="assets/V03-F3_59d21f1c8b23.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V04-M_d949ccbfb689.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img alt="F9" decoding="async" src="assets/F9-B_f93babe80a02.webp"><video loop="" muted="" playsinline="" src="assets/V9-F9-B_5314af0d4b23.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F3-C_a8639abdb12c.webp"><video loop="" muted="" playsinline="" src="assets/V03-F3_59d21f1c8b23.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V04-M_d949ccbfb689.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F9-B_f93babe80a02.webp"><video loop="" muted="" playsinline="" src="assets/V9-F9-B_5314af0d4b23.webm"></video>
+                </div>
+            </div>
+            <div class="gallery-column col-4">
+                <div class="gallery-card">
+                <img alt="F8" decoding="async" src="assets/F8-A_7e5cc86b4baa.webp"><video loop="" muted="" playsinline="" src="assets/V08-F8_a1ebabfa6d35.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img alt="F4" decoding="async" src="assets/F4-D_1445677abbca.webp"><video loop="" muted="" playsinline="" src="assets/VO4-F4-D_992501acd8ca.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V05-F10_ec74e40e901f.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F8-A_7e5cc86b4baa.webp"><video loop="" muted="" playsinline="" src="assets/V08-F8_a1ebabfa6d35.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F4-D_1445677abbca.webp"><video loop="" muted="" playsinline="" src="assets/VO4-F4-D_992501acd8ca.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V05-F10_ec74e40e901f.webm"></video>
+                </div>
+            </div>
+            <div class="gallery-column col-5">
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V11-D-1_2b574ae1e7e0.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img alt="F1-Extra" decoding="async" src="assets/F1_63accf30e3bc.webp"><video loop="" muted="" playsinline="" src="assets/V01-F1_33a69b475e14.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img alt="F2-Extra" decoding="async" src="assets/F2-_59a111c69da1.webp"><video loop="" muted="" playsinline="" src="assets/V02-F2_3b571a346d97.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <video autoplay="" class="always-video" loop="" muted="" playsinline="" src="assets/V11-D-1_2b574ae1e7e0.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F1_63accf30e3bc.webp"><video loop="" muted="" playsinline="" src="assets/V01-F1_33a69b475e14.webm"></video>
+                </div>
+                <div class="gallery-card">
+                <img decoding="async" src="assets/F2-_59a111c69da1.webp"><video loop="" muted="" playsinline="" src="assets/V02-F2_3b571a346d97.webm"></video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Benefícios e Diferenciais -->
+    <section class="benefits" id="diferenciais">
+        <div class="container">
+            <div class="section-header center">
+                <h2>Por que somos diferentes?</h2>
+            </div>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Funcionalidade</th>
+                            <th>Concorrentes (MiroMiro, etc)</th>
+                            <th class="highlight">LayoutGenome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Saída (Output)</td>
+                            <td>Tokens CSS/JSON puros</td>
+                            <td class="highlight">Componentes reativos reais (AI-Ready)</td>
+                        </tr>
+                        <tr>
+                            <td>Animações (Motion)</td>
+                            <td>Ignorado</td>
+                            <td class="highlight">Mapeia e clona Hover/Scroll states</td>
+                        </tr>
+                        <tr>
+                            <td>Integração com IA</td>
+                            <td>Requer engenharia de prompt</td>
+                            <td class="highlight">Contexto pronto e envelopado</td>
+                        </tr>
+                        <tr>
+                            <td>Estruturas HTML</td>
+                            <td>Não extrai markup</td>
+                            <td class="highlight">Extrai blocos reais como Hero, Cards</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Depoimentos -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header center">
+                <h2>Aprovado por quem entrega resultado</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card card">
+                    <div class="user-info">
+                        <div class="avatar avatar-1"></div>
+                        <div>
+                            <strong>Lucas M.</strong>
+                            <span class="user-role">Dev Autônomo</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com o Cursor pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
+                </div>
+                
+                <div class="testimonial-card card">
+                    <div class="user-info">
+                        <div class="avatar avatar-2"></div>
+                        <div>
+                            <strong>Camila F.</strong>
+                            <span class="user-role">Agência de Performance</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. O Lovable agora programa como se fosse um Front-end sênior. Impressionante."</p>
+                </div>
+                
+                <div class="testimonial-card card">
+                    <div class="user-info">
+                        <div class="avatar avatar-3"></div>
+                        <div>
+                            <strong>Rafael V.</strong>
+                            <span class="user-role">SaaS Founder</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pro Windsurf. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CTA Secundário & Preço -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-box glow-border">
+                <div class="pricing-content">
+                    <h2>Vire um estúdio de um homem só.</h2>
+                    <p>Aumente sua velocidade de entrega e qualidade visual por uma fração do que você cobraria a mais em um projeto.</p>
+                    
+                    <div class="price-display">
+                        <span class="currency">R$</span>
+                        <span class="amount">40</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <p class="price-context">O preço de duas pizzas para multiplicar seu faturamento e acabar com as dores de cabeça do CSS.</p>
+                    
+                    <a href="#" class="btn btn-primary btn-large">Assinar e Ganhar Superpoderes</a>
+                    <div class="guarantee">
+                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        Garantia de 7 dias ou seu dinheiro de volta
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FAQ -->
+    <section class="faq" id="faq">
+        <div class="container faq-container">
+            <div class="section-header center">
+                <h2>Dúvidas Frequentes</h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <input type="checkbox" class="faq-toggle" id="faq1">
+                    <label for="faq1" class="faq-question">
+                        Funciona com o Lovable, Cursor e Windsurf?
+                        <span class="icon">+</span>
+                    </label>
+                    <div class="faq-answer">
+                        <p>Sim! O LayoutGenome gera um documento HTML estruturado focado justamente para o contexto (Context Window) dessas IAs. Basta "dropar" o arquivo .md/.html gerado na sua IDE e instruir a IA a usar os padrões ali contidos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" class="faq-toggle" id="faq2">
+                    <label for="faq2" class="faq-question">
+                        Vocês copiam o código exato de outros sites?
+                        <span class="icon">+</span>
+                    </label>
+                    <div class="faq-answer">
+                        <p>Não. Nós acessamos a página via headless browser, calculamos os computed styles, espaçamentos, tipografia, extraímos a semântica visual e geramos nossas próprias regras de componentes (o DNA). Nós criamos um "novo" design system estrutural inspirado visualmente na referência.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <input type="checkbox" class="faq-toggle" id="faq3">
+                    <label for="faq3" class="faq-question">
+                        O output pesa muito no context window da IA?
+                        <span class="icon">+</span>
+                    </label>
+                    <div class="faq-answer">
+                        <p>Nosso extrator é ultra-otimizado. Ao invés de jogar 10 mil linhas de CSS bagunçado na sua IA, nós destilamos estilos repetitivos, variáveis e agrupamos os componentes chave, economizando tokens e melhorando brutalmente a inteligência da resposta gerada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Rodapé -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-icon">🧬</span>
+                    <span class="logo-text">PixelGenome</span>
+                </div>
+                <p>O Extrator de DNA de designs premium.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="link-column">
+                    <h4>Produto</h4>
+                    <a href="#">Planos</a>
+                    <a href="#">Como Funciona</a>
+                    <a href="#">Integrações</a>
+                </div>
+                <div class="link-column">
+                    <h4>Recursos</h4>
+                    <a href="#">Documentação</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Contato</a>
+                </div>
+                <div class="link-column">
+                    <h4>Legal</h4>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Privacidade</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 PixelGenome. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
