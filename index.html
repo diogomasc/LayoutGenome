@@ -380,38 +380,74 @@
                 <h2>Aprovado por quem entrega resultado</h2>
             </div>
             
-            <div class="testimonials-grid">
-                <div class="testimonial-card card">
-                    <div class="user-info">
-                        <div class="avatar avatar-1"></div>
-                        <div>
-                            <strong>Lucas M.</strong>
-                            <span class="user-role">Dev Autônomo</span>
+            <div class="testimonials-marquee-mask">
+                <div class="testimonials-marquee-content">
+                    <div class="testimonial-card card">
+                        <div class="user-info">
+                            <div class="avatar avatar-1"></div>
+                            <div>
+                                <strong>Lucas M.</strong>
+                                <span class="user-role">Dev Autônomo</span>
+                            </div>
                         </div>
+                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com o Cursor pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
                     </div>
-                    <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com o Cursor pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
-                </div>
-                
-                <div class="testimonial-card card">
-                    <div class="user-info">
-                        <div class="avatar avatar-2"></div>
-                        <div>
-                            <strong>Camila F.</strong>
-                            <span class="user-role">Agência de Performance</span>
+                    
+                    <div class="testimonial-card card">
+                        <div class="user-info">
+                            <div class="avatar avatar-2"></div>
+                            <div>
+                                <strong>Camila F.</strong>
+                                <span class="user-role">Agência de Performance</span>
+                            </div>
                         </div>
+                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. O Lovable agora programa como se fosse um Front-end sênior. Impressionante."</p>
                     </div>
-                    <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. O Lovable agora programa como se fosse um Front-end sênior. Impressionante."</p>
-                </div>
-                
-                <div class="testimonial-card card">
-                    <div class="user-info">
-                        <div class="avatar avatar-3"></div>
-                        <div>
-                            <strong>Rafael V.</strong>
-                            <span class="user-role">SaaS Founder</span>
+                    
+                    <div class="testimonial-card card">
+                        <div class="user-info">
+                            <div class="avatar avatar-3"></div>
+                            <div>
+                                <strong>Rafael V.</strong>
+                                <span class="user-role">SaaS Founder</span>
+                            </div>
                         </div>
+                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pro Windsurf. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
                     </div>
-                    <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pro Windsurf. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
+
+                    <!-- Clones for infinite loop -->
+                    <div class="testimonial-card card">
+                        <div class="user-info">
+                            <div class="avatar avatar-1"></div>
+                            <div>
+                                <strong>Lucas M.</strong>
+                                <span class="user-role">Dev Autônomo</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com o Cursor pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
+                    </div>
+                    
+                    <div class="testimonial-card card">
+                        <div class="user-info">
+                            <div class="avatar avatar-2"></div>
+                            <div>
+                                <strong>Camila F.</strong>
+                                <span class="user-role">Agência de Performance</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. O Lovable agora programa como se fosse um Front-end sênior. Impressionante."</p>
+                    </div>
+                    
+                    <div class="testimonial-card card">
+                        <div class="user-info">
+                            <div class="avatar avatar-3"></div>
+                            <div>
+                                <strong>Rafael V.</strong>
+                                <span class="user-role">SaaS Founder</span>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pro Windsurf. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -486,7 +522,40 @@
         </div>
     </section>
 
-    <!-- 9. Rodapé -->
+    <!-- 9. Capture Section / Updates -->
+    <section class="capture-section" id="novidades">
+        <div class="ambient-blob ambient-blob-1"></div>
+        <div class="ambient-blob ambient-blob-2"></div>
+        
+        <div class="container">
+            <div class="capture-card">
+                <div class="capture-header">
+                    <div class="capture-status">
+                        <span class="capture-status-dot"></span>
+                        Acesso Antecipado
+                    </div>
+                </div>
+                <div class="capture-content">
+                    <h2 class="capture-title">Fique por dentro <br><span class="text-gradient">das atualizações.</span></h2>
+                    <p class="capture-subtitle">Receba novidades sobre novos layouts suportados, atualizações no algoritmo de extração e dicas de prompt engeneering para o LayoutGenome.</p>
+                    
+                    <form class="capture-form">
+                        <div class="capture-input-wrapper">
+                            <svg class="capture-input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                            <input class="capture-input" placeholder="seu-email@exemplo.com" required="" type="email"/>
+                        </div>
+                        <button class="capture-btn" type="button">
+                            <span>Inscrever</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </form>
+                    <p class="capture-footer-text">Junte-se a dezenas de desenvolvedores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Rodapé -->
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-brand">
