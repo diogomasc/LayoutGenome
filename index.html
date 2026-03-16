@@ -97,24 +97,23 @@
                             <span class="control minimize"></span>
                             <span class="control maximize"></span>
                         </div>
-                        <div class="window-title">layout-genome.ts</div>
+                        <div class="window-title">layout_genome.py</div>
                     </div>
                     <div class="window-body">
-<pre><code><span class="keyword">import</span> { <span class="variable">extractDNA</span> } <span class="keyword">from</span> <span class="string">'@pixelgenome/core'</span>;
-<span class="keyword">import</span> { <span class="variable">generateContext</span> } <span class="keyword">from</span> <span class="string">'@pixelgenome/adapters'</span>;
+<pre><code><span class="keyword">from</span> <span class="variable">pixelgenome</span> <span class="keyword">import</span> <span class="variable">extract_dna</span>, <span class="variable">generate_context</span>
 
-<span class="comment">// 1. Alvo: Um site premium com motion incrível</span>
-<span class="keyword">const</span> <span class="variable">targetUrl</span> = <span class="string">'https://site-referencia.com'</span>;
+<span class="comment"># 1. Alvo: Um site premium com motion incrível</span>
+<span class="variable">target_url</span> = <span class="string">"https://site-referencia.com"</span>
 
-<span class="comment">// 2. Extraindo tipografia, motion e componentes reais</span>
-<span class="keyword">const</span> <span class="variable">designSystem</span> = <span class="keyword">await</span> <span class="function">extractDNA</span>(<span class="variable">targetUrl</span>, {
-  <span class="property">deepParse</span>: <span class="boolean">true</span>,
-  <span class="property">captureMotion</span>: <span class="boolean">true</span> 
-});
+<span class="comment"># 2. Extraindo tipografia, motion e componentes reais</span>
+<span class="variable">design_system</span> = <span class="keyword">await</span> <span class="function">extract_dna</span>(<span class="variable">target_url</span>, 
+    <span class="property">deep_parse</span>=<span class="boolean">True</span>, 
+    <span class="property">capture_motion</span>=<span class="boolean">True</span> 
+)
 
-<span class="comment">// 3. Gerando contexto pronto para sua IDE ou ferramenta favorita</span>
-<span class="function">generateContext</span>(<span class="variable">designSystem</span>, <span class="string">'./design-system.html'</span>);
-<span class="comment">// -> Mágica pronta. Sua IA agora tem bom gosto.</span></code></pre>
+<span class="comment"># 3. Gerando contexto pronto para sua IDE ou ferramenta favorita</span>
+<span class="function">generate_context</span>(<span class="variable">design_system</span>, <span class="property">output</span>=<span class="string">"./design-system.html"</span>)
+<span class="comment"># -> Mágica pronta. Sua IA agora tem bom gosto.</span></code></pre>
                     </div>
                 </div>
             </div>
