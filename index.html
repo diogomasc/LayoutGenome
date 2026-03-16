@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="dark-theme">
+    <!-- Custom cursor elements (desktop only) - Blue subtle version -->
+    <div class="pointer-events-none cursor-ring hidden md:block" id="cursor-ring"></div>
+    <div class="pointer-events-none cursor-dot hidden md:block" id="cursor-dot"></div>
     
     <!-- Background Effects -->
     <div class="bg-effects">
@@ -28,17 +31,26 @@
                 <span class="logo-icon">🧬</span>
                 <span class="logo-text">PixelGenome</span>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links">
+                <a href="#problema">O Problema</a>
                 <a href="#como-funciona">Como Funciona</a>
+                <a href="#resultados">Resultados</a>
                 <a href="#diferenciais">Diferenciais</a>
+                <a href="#depoimentos">Depoimentos</a>
                 <a href="#faq">FAQ</a>
+                <a href="#pricing" class="mobile-only-btn">Testar Agora</a>
             </div>
-            <a href="#pricing" class="btn btn-outline">Testar Agora</a>
+            <a href="#pricing" class="btn btn-outline desktop-only-btn">Testar Agora</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
     </nav>
 
     <!-- 1. Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container hero-container">
             <div class="hero-content">
                 <div class="badge-custom">
@@ -52,7 +64,7 @@
                 </h1>
                 
                 <p class="hero-subtitle">
-                    Pare de brigar com prompts que geram sites genéricos. Extraia HTML, CSS e Motion de qualquer site de referência e crie um Design System perfeito para o Cursor e Lovable consumirem.
+                    Pare de brigar com prompts que geram sites genéricos. Extraia HTML, CSS e Motion de qualquer site de referência e crie um Design System perfeito para a sua IDE integrada com IA ou ferramenta low-code favorita.
                 </p>
                 
                 <div class="hero-action">
@@ -100,8 +112,8 @@
   <span class="property">captureMotion</span>: <span class="boolean">true</span> 
 });
 
-<span class="comment">// 3. Gerando contexto pronto para Cursor ou Lovable</span>
-<span class="function">generateContext</span>(<span class="variable">designSystem</span>, <span class="string">'./.cursor/design-system.html'</span>);
+<span class="comment">// 3. Gerando contexto pronto para sua IDE ou ferramenta favorita</span>
+<span class="function">generateContext</span>(<span class="variable">designSystem</span>, <span class="string">'./design-system.html'</span>);
 <span class="comment">// -> Mágica pronta. Sua IA agora tem bom gosto.</span></code></pre>
                     </div>
                 </div>
@@ -242,7 +254,7 @@
                         <li><span class="icon">✅</span> Qualidade de estúdio desde a primeira geração.</li>
                         <li><span class="icon">✅</span> Motion, hovers e transições 100% preservados.</li>
                         <li><span class="icon">✅</span> Variáveis, fontes e componentes consistentes.</li>
-                        <li><span class="icon">✅</span> Velocidade extrema no Cursor/Lovable.</li>
+                        <li><span class="icon">✅</span> Velocidade extrema na sua IDE integrada com IA.</li>
                         <li><span class="icon">✅</span> Combine componentes de diversos sites, criando suítes prontas para as IAs de código.</li>
                     </ul>
                     <div class="visual-example good-example">
@@ -294,14 +306,14 @@
                         <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                     </div>
                     <h3>IA Codificando</h3>
-                    <p>Jogue o documento no contexto do Cursor, Windsurf ou Lovable. Peça para a IA construir seu site usando aquelas regras e veja a mágica.</p>
+                    <p>Jogue o documento no contexto da sua ferramenta de desenvolvimento com IA favorita. Peça para a IA construir seu site usando aquelas regras e veja a mágica.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Galeria Asimov-like (Framer Gallery Container Clone) -->
-    <section class="gallery-showcase">
+    <section class="gallery-showcase" id="resultados">
         <!-- O container deve ocupar a largura total, simular o estilo de portfólio horizontal -->
         <div class="gallery-header">
             <h2>Resultados de Alta Fidelidade</h2>
@@ -455,7 +467,7 @@
     </section>
 
     <!-- 6. Depoimentos -->
-    <section class="testimonials">
+    <section class="testimonials" id="depoimentos">
         <div class="container">
             <div class="section-header center">
                 <h2>Aprovado por quem entrega resultado</h2>
@@ -471,7 +483,7 @@
                                 <span class="user-role">Dev Autônomo</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com o Cursor pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
+                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com a minha IDE pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
                     </div>
                     
                     <div class="testimonial-card card">
@@ -482,7 +494,7 @@
                                 <span class="user-role">Agência de Performance</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. O Lovable agora programa como se fosse um Front-end sênior. Impressionante."</p>
+                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. Minha ferramenta de IA agora programa como se fosse um Front-end sênior. Impressionante."</p>
                     </div>
                     
                     <div class="testimonial-card card">
@@ -493,7 +505,7 @@
                                 <span class="user-role">SaaS Founder</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pro Windsurf. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
+                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pra minha IDE integrada com IA. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
                     </div>
 
                     <!-- Clones for infinite loop -->
@@ -505,7 +517,7 @@
                                 <span class="user-role">Dev Autônomo</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com o Cursor pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
+                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com a minha IDE pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
                     </div>
                     
                     <div class="testimonial-card card">
@@ -516,7 +528,7 @@
                                 <span class="user-role">Agência de Performance</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. O Lovable agora programa como se fosse um Front-end sênior. Impressionante."</p>
+                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. Minha ferramenta de IA agora programa como se fosse um Front-end sênior. Impressionante."</p>
                     </div>
                     
                     <div class="testimonial-card card">
@@ -527,7 +539,7 @@
                                 <span class="user-role">SaaS Founder</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pro Windsurf. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
+                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pra minha IDE integrada com IA. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
                     </div>
 
                     <!-- Extra Clones to prevent gap on large screens -->
@@ -539,7 +551,7 @@
                                 <span class="user-role">Dev Autônomo</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com o Cursor pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
+                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com a minha IDE pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
                     </div>
                     
                     <div class="testimonial-card card">
@@ -550,7 +562,7 @@
                                 <span class="user-role">Agência de Performance</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. O Lovable agora programa como se fosse um Front-end sênior. Impressionante."</p>
+                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. Minha ferramenta de IA agora programa como se fosse um Front-end sênior. Impressionante."</p>
                     </div>
                     
                     <div class="testimonial-card card">
@@ -561,7 +573,7 @@
                                 <span class="user-role">SaaS Founder</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pro Windsurf. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
+                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pra minha IDE integrada com IA. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
                     </div>
 
                     <div class="testimonial-card card">
@@ -572,7 +584,7 @@
                                 <span class="user-role">Dev Autônomo</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com o Cursor pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
+                        <p class="testimonial-text">"Economizei 15 horas de CSS no meu último projeto com o LayoutGenome. Antes eu ficava brigando com a minha IDE pra alinhar coisas básicas e as fontes sempre vinham erradas."</p>
                     </div>
                     
                     <div class="testimonial-card card">
@@ -583,7 +595,7 @@
                                 <span class="user-role">Agência de Performance</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. O Lovable agora programa como se fosse um Front-end sênior. Impressionante."</p>
+                        <p class="testimonial-text">"Aumentei meu ticket médio entregando sites com animações de estúdio. Minha ferramenta de IA agora programa como se fosse um Front-end sênior. Impressionante."</p>
                     </div>
                     
                     <div class="testimonial-card card">
@@ -594,7 +606,7 @@
                                 <span class="user-role">SaaS Founder</span>
                             </div>
                         </div>
-                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pro Windsurf. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
+                        <p class="testimonial-text">"O negócio clona a alma do site! Coloquei a URL da Stripe e gerei o Design System pra minha IDE integrada com IA. Em 40 minutos subi uma landing page idêntica em qualidade e microinterações."</p>
                     </div>
                 </div>
             </div>
@@ -646,7 +658,7 @@
                         <span class="icon">+</span>
                     </label>
                     <div class="faq-answer">
-                        <p>O LayoutGenome é um <strong>extrator inteligente de sites</strong>. Ele baixa todo o código fonte de uma página web de referência que você gosta (HTML, estilos CSS, scripts JS e assets) e processa esse material pra gerar um Design System intermediário. Nós extraímos os componentes exatos (Hero, botões, cards), a tipografia, as variáveis CSS e toda a galeria de motion (animações de entrada, transições de hover e scroll). O resultado é você empacotar uma referência incrível numa linguagem que IAs, como Cursor e Antigravity, conseguem entender e replicar perfeitamente.</p>
+                        <p>O LayoutGenome é um <strong>extrator inteligente de sites</strong>. Ele baixa todo o código fonte de uma página web de referência que você gosta (HTML, estilos CSS, scripts JS e assets) e processa esse material pra gerar um Design System intermediário. Nós extraímos os componentes exatos (Hero, botões, cards), a tipografia, as variáveis CSS e toda a galeria de motion (animações de entrada, transições de hover e scroll). O resultado é você empacotar uma referência incrível numa linguagem que IAs e ferramentas Low-code/No-code conseguem entender e replicar perfeitamente.</p>
                     </div>
                 </div>
 
@@ -668,7 +680,7 @@
                         <span class="icon">+</span>
                     </label>
                     <div class="faq-answer">
-                        <p>No modelo <em>copy e paste</em>. Nós entregamos um documento HTML limpo e bem estruturado. O desenvolvedor <strong>insere esse documento (O DNA do design) no contexto nativo (Context Window) do Cursor, Lovable ou Windsurf</strong>. A partir daí, basta pedir: "construa uma nova seção baseada nos padrões desse documento". A IA não vai mais adivinhar estilos, ela vai usar com precisão cirúrgica a combinação exata de cores, espaçamentos, tipografia e animações originais capturadas. Isso zera o tempo perdido em tentativa e erro.</p>
+                        <p>No modelo <em>copy e paste</em>. Nós entregamos um documento HTML limpo e bem estruturado. O desenvolvedor <strong>insere esse documento (O DNA do design) no contexto nativo (Context Window) da sua IDE ou ferramenta low-code/no-code favorita</strong>. A partir daí, basta pedir: "construa uma nova seção baseada nos padrões desse documento". A IA não vai mais adivinhar estilos, ela vai usar com precisão cirúrgica a combinação exata de cores, espaçamentos, tipografia e animações originais capturadas. Isso zera o tempo perdido em tentativa e erro.</p>
                     </div>
                 </div>
 
@@ -686,11 +698,11 @@
         
                     <input type="checkbox" class="faq-toggle" id="faq1">
                     <label for="faq1" class="faq-question">
-                        Funciona com o Lovable, Cursor e Windsurf?
+                        Funciona com qualquer IDE ou ferramenta Low-code/No-code?
                         <span class="icon">+</span>
                     </label>
                     <div class="faq-answer">
-                        <p>Sim! O LayoutGenome gera um documento HTML estruturado focado justamente para o contexto (Context Window) dessas IAs. Basta "dropar" o arquivo .md/.html gerado na sua IDE e instruir a IA a usar os padrões ali contidos.</p>
+                        <p>Sim! O LayoutGenome gera um documento HTML estruturado focado justamente para o contexto (Context Window) de qualquer ambiente que aceite parâmetros de design. Basta "dropar" o arquivo .md/.html gerado na sua ferramenta e instruir a IA a usar os padrões ali contidos.</p>
                     </div>
                 </div>
 
@@ -791,5 +803,249 @@
         </div>
     </footer>
 
+    <!-- Main Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // FAQ Toggle Logic
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const input = item.querySelector('input');
+                const label = item.querySelector('label');
+                
+                if(label && input) {
+                    label.addEventListener('click', (e) => {
+                        // Previne o comportamento padrão para não bugar no mobile as vezes
+                        e.preventDefault();
+                        
+                        // Alterna o atual
+                        input.checked = !input.checked;
+                    });
+                }
+            });
+
+            // Mobile Menu Logic
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            const body = document.body;
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                });
+
+                // Close menu when clicking links
+                const links = navLinks.querySelectorAll('a');
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuToggle.classList.remove('active');
+                        navLinks.classList.remove('active');
+                        body.classList.remove('menu-open');
+                    });
+                });
+            }
+
+            // Hero Code Window 3D Tilt Effect
+            const codeWindow = document.querySelector('.code-window');
+            if (codeWindow) {
+                codeWindow.addEventListener('mousemove', (e) => {
+                    const rect = codeWindow.getBoundingClientRect();
+                    const x = e.clientX - rect.left; // x position within the element
+                    const y = e.clientY - rect.top;  // y position within the element
+                    
+                    // Calculate rotation depending on mouse position
+                    // Center is 0, edges are max degrees
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -10; // Max 10 deg
+                    const rotateY = ((x - centerX) / centerX) * 10;  // Max 10 deg
+                    
+                    // Apply exact transformations
+                    codeWindow.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    codeWindow.style.transition = 'transform 0.1s ease-out'; // Fast response while moving
+                });
+
+                codeWindow.addEventListener('mouseleave', () => {
+                    // Reset to default css state (this CSS handles the perspective too)
+                    codeWindow.style.transform = 'perspective(1000px) rotateY(-5deg) rotateX(5deg)';
+                    codeWindow.style.transition = 'transform 0.5s ease'; // Smooth return
+                });
+            }
+
+            // Custom cursor logic with subtle blue snake-style trail
+            const ring = document.getElementById('cursor-ring');
+            const dot = document.getElementById('cursor-dot');
+            if (ring && dot) {
+                let rafId;
+                let targetX = window.innerWidth / 2, targetY = window.innerHeight / 2;
+                let currentX = targetX, currentY = targetY;
+
+                // Snake segments
+                const SEGMENTS = 14; // Slightly shorter for more subtlety
+                const segEls = [];
+                const segX = new Array(SEGMENTS);
+                const segY = new Array(SEGMENTS);
+                let sizeBoost = 0;
+
+                const createSegment = (i) => {
+                    const el = document.createElement('div');
+                    const z = 9998; // under ring/dot
+                    const baseSize = Math.max(3, 10 - i * 0.5);
+                    const opacity = Math.max(0.1, 0.6 - i * 0.04);
+                    el.className = 'pointer-events-none cursor-segment hidden md:block';
+                    el.style.cssText = [
+                        `z-index:${z};`,
+                        `width:${baseSize}px;`,
+                        `height:${baseSize}px;`,
+                        'border-radius:9999px;',
+                        'transform:translate(-50%,-50%);',
+                        // using blue: rgba(59, 130, 246)
+                        `background: rgba(59, 130, 246, ${Math.min(0.8, 0.4 + (0.02 * (SEGMENTS - i)))});`,
+                        `box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.05), 0 0 12px rgba(37, 99, 235, 0.15);`,
+                        `opacity:${opacity};`,
+                        'transition: opacity .2s;',
+                        'will-change: left, top;',
+                        'position: fixed;',
+                        'top: 0;',
+                        'left: 0;',
+                        'pointer-events: none !important;'
+                    ].join('');
+                    document.body.appendChild(el);
+                    return el;
+                };
+
+                for (let i = 0; i < SEGMENTS; i++) {
+                    segEls[i] = createSegment(i);
+                    segX[i] = targetX;
+                    segY[i] = targetY;
+                }
+
+                const updateSegmentSizes = () => {
+                    for (let i = 0; i < SEGMENTS; i++) {
+                        const base = Math.max(3, 10 - i * 0.5);
+                        const size = base + sizeBoost;
+                        segEls[i].style.width = size + 'px';
+                        segEls[i].style.height = size + 'px';
+                    }
+                };
+
+                const setImmediate = (x, y) => {
+                    ring.style.left = x + 'px';
+                    ring.style.top = y + 'px';
+                    dot.style.left = x + 'px';
+                    dot.style.top = y + 'px';
+                    for (let i = 0; i < SEGMENTS; i++) {
+                        segX[i] = x; segY[i] = y;
+                        segEls[i].style.left = x + 'px';
+                        segEls[i].style.top  = y + 'px';
+                    }
+                };
+
+                const animate = () => {
+                    // Lead ring follows smoothly
+                    currentX += (targetX - currentX) * 0.22;
+                    currentY += (targetY - currentY) * 0.22;
+                    ring.style.left = currentX + 'px';
+                    ring.style.top = currentY + 'px';
+
+                    // Dot snaps to target
+                    dot.style.left = targetX + 'px';
+                    dot.style.top = targetY + 'px';
+
+                    // Snake: head follows target, rest follow the previous segment
+                    segX[0] += (targetX - segX[0]) * 0.28;
+                    segY[0] += (targetY - segY[0]) * 0.28;
+
+                    for (let i = 1; i < SEGMENTS; i++) {
+                        segX[i] += (segX[i - 1] - segX[i]) * 0.28;
+                        segY[i] += (segY[i - 1] - segY[i]) * 0.28;
+                    }
+
+                    for (let i = 0; i < SEGMENTS; i++) {
+                        segEls[i].style.left = segX[i] + 'px';
+                        segEls[i].style.top  = segY[i] + 'px';
+                    }
+
+                    rafId = requestAnimationFrame(animate);
+                };
+
+                const onMove = (e) => {
+                    targetX = e.clientX;
+                    targetY = e.clientY;
+                };
+
+                const enlarge = () => {
+                    ring.style.width = '36px';
+                    ring.style.height = '36px';
+                    ring.style.borderColor = 'rgba(59, 130, 246, 0.8)';
+                    ring.style.boxShadow = '0 0 0 2px rgba(59, 130, 246, 0.1), 0 0 40px rgba(37, 99, 235, 0.3)';
+                    sizeBoost = 1.5;
+                    updateSegmentSizes();
+                };
+
+                const reset = () => {
+                    ring.style.width = '24px';
+                    ring.style.height = '24px';
+                    ring.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+                    ring.style.boxShadow = '0 0 0 1px rgba(59, 130, 246, 0.1), 0 0 20px rgba(37, 99, 235, 0.15)';
+                    sizeBoost = 0;
+                    updateSegmentSizes();
+                };
+
+                const hide = () => {
+                    ring.style.opacity = '0';
+                    dot.style.opacity = '0';
+                    for (const el of segEls) el.style.opacity = '0';
+                };
+
+                const show = () => {
+                    ring.style.opacity = '.7';
+                    dot.style.opacity = '.8';
+                    for (let i = 0; i < SEGMENTS; i++) {
+                        const opacity = Math.max(0.1, 0.6 - i * 0.04);
+                        segEls[i].style.opacity = opacity;
+                    }
+                };
+
+                // Start animation
+                setImmediate(window.innerWidth / 2, window.innerHeight / 2);
+                show();
+                updateSegmentSizes();
+                rafId = requestAnimationFrame(animate);
+                window.addEventListener('mousemove', onMove, { passive: true });
+                window.addEventListener('mouseenter', show);
+                window.addEventListener('mouseleave', hide);
+
+                // Hover targets enlarge effect
+                const hoverTargets = document.querySelectorAll(
+                    'a, button, input, label, .btn, .btn-lumina, .btn-outline, .faq-question, .capture-btn, .logo, .nav-links a, .control'
+                );
+                hoverTargets.forEach((el) => {
+                    el.addEventListener('mouseenter', enlarge);
+                    el.addEventListener('mouseleave', reset);
+                });
+
+                // Click feedback
+                window.addEventListener('mousedown', () => {
+                    ring.style.transform = 'translate(-50%, -50%) scale(0.85)';
+                });
+                window.addEventListener('mouseup', () => {
+                    ring.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+
+                // Cleanup on page hide
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) {
+                        cancelAnimationFrame(rafId);
+                    } else {
+                        rafId = requestAnimationFrame(animate);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
