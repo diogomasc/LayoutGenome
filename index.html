@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/pages/home.css">
+    <link rel="stylesheet" href="css/modal.css"> 
 </head>
 <body class="dark-theme">
     <!-- Custom cursor elements (desktop only) - Blue subtle version -->
@@ -317,6 +318,29 @@
                     </div>
                     <h3>IA Codificando</h3>
                     <p>Jogue o documento no contexto da sua ferramenta de desenvolvimento com IA favorita. Peça para a IA construir seu site usando aquelas regras e veja a mágica.</p>
+                </div>
+            </div>
+            
+            <div class="roadmap-current-phase glow-border">
+                <div class="phase-badge">Fase Atual: Beta Extrator</div>
+                <h3>Como utilizar hoje:</h3>
+                <p>Nesta primeira fase, o LayoutGenome foca na extração profunda de ativos. O botão no hero realiza o <strong>Download Integral</strong> do site (Pacote ZIP com HTML/CSS/Assets).</p>
+                <div class="roadmap-steps-list">
+                    <div class="roadmap-item">
+                        <span class="step-bullet">1</span>
+                        <span>Baixe o ZIP do site de referência usando o campo de extração no topo da página.</span>
+                    </div>
+                    <div class="roadmap-item">
+                        <span class="step-bullet">2</span>
+                        <span>Envie o <code>index.html</code> contido no ZIP para nosso <a href="https://layoutgenome-engine.com" target="_blank" class="text-gradient" style="font-weight: 700;">Engine de Processamento Avançado</a>.</span>
+                    </div>
+                    <div class="roadmap-item">
+                        <span class="step-bullet">3</span>
+                        <span>Obtenha o Genoma pronto para uso imediato em sua IDE integrada com IA favorita.</span>
+                    </div>
+                </div>
+                <div class="roadmap-note">
+                    <p>Estamos consolidando esta ponte para tornar o processo 100% nativo e automatizado. Por enquanto, desfrute da extração com fidelidade de estúdio.</p>
                 </div>
             </div>
         </div>
@@ -812,6 +836,25 @@
             </div>
         </div>
     </footer>
+
+    <!-- 11. Modal de Sucesso -->
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-card">
+            <div class="modal-icon-wrapper">
+                <div class="modal-icon-inner">🧬</div>
+            </div>
+            <h3 class="modal-title">Tudo Pronto!</h3>
+            <p class="modal-text">O processamento foi concluído com sucesso. Seu pacote ZIP premium está pronto para download.</p>
+            <div class="modal-action">
+                <a href="#" class="btn-lumina" id="modal-download-btn">
+                    <div class="glow-spin-wrapper"><div class="glow-spin"></div></div>
+                    <div class="btn-inner-bg"></div>
+                    <span class="btn-text">Baixar Arquivo Agora</span>
+                </a>
+                <button class="modal-close-btn" id="modal-close-btn">Fechar</button>
+            </div>
+        </div>
+    </div>
 
     <!-- JS Modules -->
     <script src="js/smooth-scroll.js"></script>
