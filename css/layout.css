@@ -1,0 +1,249 @@
+/* ===========================
+   LAYOUT — Container, Sections & Global Responsives
+   =========================== */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Section Basics */
+section {
+  padding: 100px 0;
+}
+
+.section-header {
+  margin-bottom: 64px;
+}
+
+.section-header.center {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+
+.section-header h2 {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 18px;
+}
+
+/* ========================
+   Responsive: Tablet (≤ 991px)
+   ======================== */
+@media (max-width: 991px) {
+  .hero {
+    padding: 100px 0 60px;
+  }
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  .hero-content, .hero-visual {
+    min-width: 0;
+    width: 100%;
+  }
+  .hero-title {
+    font-size: 38px;
+    line-height: 1.1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+  }
+  .hero-subtitle {
+    margin: 0 auto 32px;
+    font-size: 16px;
+    max-width: 100%;
+  }
+  .action-meta {
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .dot-separator {
+    display: none;
+  }
+  .hero-title br {
+    display: none;
+  }
+  .badge-custom {
+    margin: 0 auto 24px;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    text-align: center;
+  }
+  .code-window {
+    transform: none !important;
+  }
+
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+  .steps-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .step-connector {
+    height: 24px;
+    width: 2px;
+    margin: 0 auto;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  /* Pricing box tablet */
+  .pricing-box {
+    padding: 48px 32px;
+  }
+  .pricing-content h2 {
+    font-size: 36px;
+  }
+
+  /* Section header tablet */
+  .section-header h2 {
+    font-size: 32px;
+  }
+}
+
+/* ========================
+   Responsive: Mobile (≤ 768px)
+   ======================== */
+@media (max-width: 768px) {
+  /* General section spacing */
+  section {
+    padding: 60px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-header.center {
+    margin: 0 auto 40px;
+  }
+
+  .section-header h2 {
+    font-size: 28px;
+  }
+
+  .section-header p {
+    font-size: 16px;
+  }
+
+  /* Hero mobile */
+  .hero {
+    padding: 80px 0 40px;
+  }
+  .hero-title {
+    font-size: 30px;
+    padding: 0;
+  }
+  .hero-subtitle {
+    font-size: 14px;
+    padding: 0;
+  }
+  .extract-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .btn-lumina {
+    width: 100%;
+  }
+
+  /* Pricing mobile */
+  .pricing-box {
+    padding: 40px 24px;
+    border-radius: 16px;
+  }
+  .pricing-content h2 {
+    font-size: 28px;
+  }
+  .amount {
+    font-size: 56px;
+  }
+
+  /* Comparison table mobile */
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 16px 12px;
+    font-size: 14px;
+  }
+
+  /* FAQ mobile */
+  .faq-question {
+    font-size: 16px;
+    padding: 20px 0;
+  }
+  .faq-list {
+    padding: 0;
+  }
+
+  /* Capture form mobile */
+  .capture-form {
+    flex-direction: column;
+  }
+  .capture-title {
+    font-size: 32px;
+  }
+  .capture-content {
+    padding: 20px 24px 32px;
+  }
+
+  /* Gallery mobile */
+  .gallery-item {
+    width: 300px;
+  }
+  .image-wrapper {
+    height: 200px;
+  }
+
+  /* Trust signals mobile */
+  .logo-item {
+    font-size: 16px;
+  }
+
+  /* Step cards mobile */
+  .step-card {
+    padding: 24px 20px;
+  }
+  .step-number {
+    font-size: 13px;
+  }
+
+  /* Footer mobile */
+  .footer-links {
+    gap: 32px;
+  }
+  .link-column h4 {
+    margin-bottom: 16px;
+  }
+}
+

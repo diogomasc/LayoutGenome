@@ -1,0 +1,585 @@
+/* ===========================
+   COMPONENTS — Reusable UI Components
+   =========================== */
+
+/* Background Effects */
+.bg-effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.3;
+}
+
+.orb-1 {
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-secondary), transparent 70%);
+}
+
+.orb-2 {
+  bottom: 20%;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-primary), transparent 70%);
+}
+
+.noise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacty='0.05'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient {
+  background: linear-gradient(
+    110deg,
+    #fff 20%,
+    var(--accent-primary) 50%,
+    var(--accent-secondary) 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-gradient-red {
+  background: linear-gradient(110deg, #ff7171 0%, #ff1818 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: #2563eb; /* Slightly darker/more vibrant blue on hover */
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3); /* Blue tinted shadow */
+}
+
+/* Lumina-inspired Button */
+.btn-lumina {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 14px 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  min-height: 56px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+  text-decoration: none;
+}
+
+.btn-lumina.btn-large {
+  padding: 16px 40px;
+  font-size: 18px;
+}
+
+.btn-lumina:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 15px 35px rgba(59, 130, 246, 0.3),
+    0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+.glow-spin-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.glow-spin {
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 80deg,
+    var(--accent-primary) 180deg,
+    transparent 280deg,
+    transparent 360deg
+  );
+  animation: spin 3s linear infinite;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.btn-lumina:hover .glow-spin {
+  opacity: 1;
+}
+
+.btn-inner-bg {
+  position: absolute;
+  inset: 2px;
+  background: #0f1624; /* Dark clean blue-ish gray matching the tech vibe */
+  border-radius: 10px;
+  z-index: 0;
+  transition: background 0.3s ease;
+}
+
+.btn-lumina:hover .btn-inner-bg {
+  background: #141d30; /* Lighter on hover */
+}
+
+.btn-text {
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--accent-primary);
+  z-index: -1;
+  border-radius: 10px;
+  filter: blur(12px);
+  opacity: 0.4;
+  transition:
+    opacity 0.3s,
+    filter 0.3s;
+}
+
+.glow-effect:hover::before {
+  opacity: 0.7;
+  filter: blur(16px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+  background: var(--glass-bg);
+  border-color: var(--text-secondary);
+}
+
+.desktop-only-btn {
+  display: inline-flex;
+}
+
+.mobile-only-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only-btn {
+    display: none;
+  }
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(10, 10, 12, 0.8);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.logo-icon {
+  font-size: 24px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+/* Hamburger Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile Nav Adjustments */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 10, 12, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .mobile-only-btn {
+    display: inline-flex;
+    margin-top: 20px;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    background: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+  }
+
+  .mobile-only-btn:active {
+    transform: scale(0.96);
+    background: #0a0a0c;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+  }
+
+  /* Hamburger Animation */
+  .menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+/* Code mockup Window */
+.code-window {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transform: rotateY(-5deg) rotateX(5deg);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.code-window:hover {
+  transform: rotateY(0deg) rotateX(0deg);
+}
+
+.window-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.close {
+  background: #ff5f56;
+}
+.minimize {
+  background: #ffbd2e;
+}
+.maximize {
+  background: #27c93f;
+}
+
+.window-title {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.window-body {
+  padding: 24px;
+  overflow-x: auto;
+}
+
+pre {
+  margin: 0;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d1d5db;
+}
+
+.keyword {
+  color: #c678dd;
+}
+.string {
+  color: #98c379;
+}
+.variable {
+  color: #e06c75;
+}
+.function {
+  color: #61afef;
+}
+.comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.boolean {
+  color: #d19a66;
+}
+.property {
+  color: #d19a66;
+}
+
+/* Cards & Utilities */
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.glow-border {
+  position: relative;
+  /* Use border-image technique with background-clip to create a gradient border
+     that is always visible regardless of stacking context */
+  background:
+    linear-gradient(var(--bg-secondary), var(--bg-secondary)) padding-box,
+    linear-gradient(135deg, rgba(59, 130, 246, 0.7), rgba(139, 92, 246, 0.7)) border-box;
+  border: 1px solid transparent;
+  /* Glow aura via box-shadow */
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.15),
+    0 0 40px rgba(139, 92, 246, 0.08),
+    inset 0 0 30px rgba(59, 130, 246, 0.03);
+}
+
+/* Custom Cursor Overrides */
+/* Ocultar cursor custom em mobile (as classes Tailwind do HTML não funcionam no projeto vanilla) */
+.cursor-ring,
+.cursor-dot,
+.cursor-segment {
+  display: none;
+}
+
+/* Mostrar e ocultar cursor padrão apenas em desktop */
+@media (min-width: 768px) {
+  .cursor-ring,
+  .cursor-dot,
+  .cursor-segment {
+    display: block;
+  }
+
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  input,
+  .btn,
+  .btn-lumina,
+  .faq-label,
+  .capture-btn,
+  .logo-item {
+    cursor: pointer !important;
+  }
+}
+
+.cursor-ring {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(59, 130, 246, 0.8);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 0 1px rgba(59, 130, 246, 0.1),
+    0 0 20px rgba(37, 99, 235, 0.15);
+  transition:
+    width 0.2s,
+    height 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.05s,
+    opacity 0.2s;
+  z-index: 9999;
+  pointer-events: none !important;
+  backdrop-filter: blur(1px);
+}
+
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  background: rgba(59, 130, 246, 0.9);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+  transition:
+    transform 0.05s,
+    opacity 0.2s;
+  z-index: 9999;
+  pointer-events: none !important;
+}
