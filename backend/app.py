@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_file, Response, jsonify
+from flask import Flask, request, send_file, Response, jsonify
 from flask_cors import CORS
 import os
 import shutil
@@ -6,7 +6,6 @@ import uuid
 import queue
 import threading
 import time
-import glob
 from downloader import WebsiteDownloader, zip_directory, get_site_name
 
 app = Flask(__name__, static_folder='../', static_url_path='')
@@ -16,10 +15,48 @@ CORS(
     expose_headers=["Content-Disposition"]
 ) # Garantir CORS amplo para desenvolvimento
 
-# Base config
 DOWNLOAD_FOLDER = 'downloads'
-if not os.path.exists(DOWNLOAD_FOLDER):
-    os.makedirs(DOWNLOAD_FOLDER)
+SESSION_CLEANUP_INTERVAL_SECONDS = 300
+SESSION_EXPIRATION_SECONDS = 1800
+SSE_QUEUE_TIMEOUT_SECONDS = 10
+
+os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
+
+# Store for SSE messages per session
+message_queues = {}
+download_results = {}
+
+def cleanup_session(session_id):
+    message_queues.pop(session_id, None)
+    download_results.pop(session_id, None)
+
+def is_session_expired(result, current_time):
+    created_at = result.get('created_at')
+    if result.get('status') != 'complete' or not created_at:
+        return False
+    return current_time - created_at > SESSION_EXPIRATION_SECONDS
+
+def remove_zip_if_exists(zip_path):
+    if not zip_path or not os.path.exists(zip_path):
+        return
+
+    try:
+        os.remove(zip_path)
+        print(f"🗑️ Removido arquivo abandonado: {os.path.basename(zip_path)}")
+    except OSError:
+        pass
+
+def collect_expired_sessions(current_time):
+    expired_sessions = []
+
+    for session_id, result in tuple(download_results.items()):
+        if not is_session_expired(result, current_time):
+            continue
+
+        remove_zip_if_exists(result.get('zip_path'))
+        expired_sessions.append(session_id)
+
+    return expired_sessions
 
 def cleanup_downloads_folder():
     """Remove all files and folders from downloads directory"""
@@ -30,50 +67,25 @@ def cleanup_downloads_folder():
                 os.remove(item_path)
             elif os.path.isdir(item_path):
                 shutil.rmtree(item_path)
-        print(f"🧹 Pasta downloads limpa com sucesso")
-    except Exception as e:
-        print(f"⚠️ Erro ao limpar pasta downloads: {e}")
+        print("🧹 Pasta downloads limpa com sucesso")
+    except OSError as error:
+        print(f"⚠️ Erro ao limpar pasta downloads: {error}")
 
-# Cleanup downloads folder on startup
 cleanup_downloads_folder()
-
-# Store for SSE messages per session
-message_queues = {}
-download_results = {}
 
 def cleanup_abandoned_sessions():
     """Clean up sessions that were never downloaded after 30 minutes"""
     while True:
-        time.sleep(300)  # Check every 5 minutes
-        current_time = time.time()
+        time.sleep(SESSION_CLEANUP_INTERVAL_SECONDS)
+        sessions_to_remove = collect_expired_sessions(time.time())
         
-        sessions_to_remove = []
-        for session_id, result in list(download_results.items()):
-            if result.get('status') == 'complete' and result.get('created_at'):
-                age = current_time - result['created_at']
-                # Remove if older than 30 minutes
-                if age > 1800:
-                    zip_path = result.get('zip_path')
-                    if zip_path and os.path.exists(zip_path):
-                        try:
-                            os.remove(zip_path)
-                            print(f"🗑️ Removido arquivo abandonado: {os.path.basename(zip_path)}")
-                        except:
-                            pass
-                    sessions_to_remove.append(session_id)
-        
-        # Clean up memory
         for session_id in sessions_to_remove:
-            if session_id in message_queues:
-                del message_queues[session_id]
-            if session_id in download_results:
-                del download_results[session_id]
+            cleanup_session(session_id)
 
-# Start cleanup thread
 cleanup_thread = threading.Thread(target=cleanup_abandoned_sessions, daemon=True)
 cleanup_thread.start()
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return app.send_static_file('index.html')
 
@@ -86,12 +98,10 @@ def start_download():
     if not url:
         return jsonify({'error': 'URL is required'}), 400
     
-    # Create session
     session_id = str(uuid.uuid4())
     message_queues[session_id] = queue.Queue()
     download_results[session_id] = {'status': 'processing', 'zip_path': None, 'filename': None}
     
-    # Start download in background thread
     thread = threading.Thread(target=process_download, args=(session_id, url))
     thread.daemon = True
     thread.start()
@@ -101,33 +111,27 @@ def start_download():
 def process_download(session_id, url):
     """Background download process"""
     q = message_queues[session_id]
-    request_id = session_id
-    download_dir = os.path.join(DOWNLOAD_FOLDER, request_id)
-    zip_path = os.path.join(DOWNLOAD_FOLDER, f"{request_id}.zip")
+    download_dir = os.path.join(DOWNLOAD_FOLDER, session_id)
+    zip_path = os.path.join(DOWNLOAD_FOLDER, f"{session_id}.zip")
     
     def log_callback(message):
         q.put(message)
     
     try:
-        # Initialize downloader with log callback
         downloader = WebsiteDownloader(url, download_dir, log_callback=log_callback)
-        
-        # Process the site
         success = downloader.process()
         
         if not success:
             download_results[session_id] = {'status': 'error', 'error': 'Failed to download site'}
             q.put("❌ Falha no download")
             return
-        
-        # Generate filename from site name
+
         site_name = get_site_name(url)
         zip_filename = f"{site_name}.zip"
         
         q.put("📦 Criando arquivo ZIP...")
         zip_directory(download_dir, zip_path)
-        
-        # Cleanup raw files
+
         shutil.rmtree(download_dir)
 
         download_results[session_id] = {
@@ -142,24 +146,22 @@ def process_download(session_id, url):
         download_results[session_id] = {'status': 'error', 'error': str(e)}
         q.put(f"❌ Erro: {str(e)}")
         
-        # Clean up any leftover files
         try:
             if os.path.exists(download_dir):
                 shutil.rmtree(download_dir)
             if os.path.exists(zip_path):
                 os.remove(zip_path)
-        except:
+        except OSError:
             pass
 
-@app.route('/stream/<session_id>')
+@app.route('/stream/<session_id>', methods=['GET'])
 def stream(session_id):
     """SSE endpoint for log streaming"""
     def generate():
-        if session_id not in message_queues:
-            yield f"data: ❌ Sessão não encontrada\n\n"
+        q = message_queues.get(session_id)
+        if q is None:
+            yield "data: ❌ Sessão não encontrada\n\n"
             return
-        
-        q = message_queues[session_id]
 
         def is_finished_status():
             return download_results.get(session_id, {}).get('status') in ['complete', 'error']
@@ -170,28 +172,23 @@ def stream(session_id):
         
         while True:
             try:
-                # Wait for message with timeout
-                message = q.get(timeout=10)
+                message = q.get(timeout=SSE_QUEUE_TIMEOUT_SECONDS)
                 yield f"data: {message}\n\n"
 
-                # If producer already marked final state and no pending logs remain,
-                # emit done immediately.
                 if is_finished_status() and q.empty():
                     yield emit_done_and_finish()
                     break
                     
             except queue.Empty:
-                # Final status can be reached between queue messages.
                 if is_finished_status():
                     yield emit_done_and_finish()
                     break
 
-                # Send keepalive
-                yield f": keepalive\n\n"
+                yield ": keepalive\n\n"
     
     return Response(generate(), mimetype='text/event-stream')
 
-@app.route('/download-file/<session_id>')
+@app.route('/download-file/<session_id>', methods=['GET'])
 def download_file(session_id):
     """Download the generated ZIP file."""
     result = download_results.get(session_id)
@@ -205,13 +202,9 @@ def download_file(session_id):
     if not os.path.exists(zip_path):
         return "File not found", 404
     
-    # Send file response and keep ZIP available for retry downloads.
     try:
         response = send_file(zip_path, as_attachment=True, download_name=filename)
         response.headers['Access-Control-Expose-Headers'] = 'Content-Disposition'
-
-        # Mantém o arquivo por um período para permitir novo clique manual.
-        # A limpeza é feita pela rotina periódica cleanup_abandoned_sessions().
         result['last_download_at'] = time.time()
         
         return response
@@ -220,8 +213,4 @@ def download_file(session_id):
         return "Error sending file", 500
 
 if __name__ == '__main__':
-    # Development server
     app.run(debug=True, host='0.0.0.0', port=5001, threaded=True)
-else:
-    # Production server (Gunicorn)
-    pass

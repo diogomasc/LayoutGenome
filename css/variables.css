@@ -1,8 +1,4 @@
-/* ===========================
-   VARIABLES — Design Tokens
-   =========================== */
 :root {
-  /* Dark Theme Color Palette */
   --bg-primary: #0a0a0c;
   --bg-secondary: #131418;
   --bg-tertiary: #1c1d23;
@@ -11,9 +7,9 @@
   --text-secondary: #a1a1aa;
   --text-muted: #71717a;
 
-  --accent-primary: #3b82f6; /* Blue base */
-  --accent-secondary: #8b5cf6; /* Purple base */
-  --accent-tertiary: #ec4899; /* Pink base */
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+  --accent-tertiary: #ec4899;
   --accent-glow: rgba(59, 130, 246, 0.4);
 
   --border-color: rgba(255, 255, 255, 0.1);

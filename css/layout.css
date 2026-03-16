@@ -1,6 +1,3 @@
-/* ===========================
-   LAYOUT — Container, Sections & Global Responsives
-   =========================== */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -8,7 +5,6 @@
   padding: 0 24px;
 }
 
-/* Section Basics */
 section {
   padding: 100px 0;
 }
@@ -33,9 +29,7 @@ section {
   font-size: 18px;
 }
 
-/* ========================
-   Responsive: Tablet (≤ 991px)
-   ======================== */
+/* Tablet */
 @media (max-width: 991px) {
   .hero {
     padding: 100px 0 60px;
@@ -49,7 +43,8 @@ section {
     padding: 0 20px;
     box-sizing: border-box;
   }
-  .hero-content, .hero-visual {
+  .hero-content,
+  .hero-visual {
     min-width: 0;
     width: 100%;
   }
@@ -115,7 +110,6 @@ section {
     gap: 40px;
   }
 
-  /* Pricing box tablet */
   .pricing-box {
     padding: 48px 32px;
   }
@@ -123,17 +117,13 @@ section {
     font-size: 36px;
   }
 
-  /* Section header tablet */
   .section-header h2 {
     font-size: 32px;
   }
 }
 
-/* ========================
-   Responsive: Mobile (≤ 768px)
-   ======================== */
+/* Mobile */
 @media (max-width: 768px) {
-  /* General section spacing */
   section {
     padding: 60px 0;
   }
@@ -154,7 +144,6 @@ section {
     font-size: 16px;
   }
 
-  /* Hero mobile */
   .hero {
     padding: 80px 0 40px;
   }
@@ -174,7 +163,6 @@ section {
     width: 100%;
   }
 
-  /* Pricing mobile */
   .pricing-box {
     padding: 40px 24px;
     border-radius: 16px;
@@ -186,7 +174,6 @@ section {
     font-size: 56px;
   }
 
-  /* Comparison table mobile */
   .comparison-table-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -197,7 +184,6 @@ section {
     font-size: 14px;
   }
 
-  /* FAQ mobile */
   .faq-question {
     font-size: 16px;
     padding: 20px 0;
@@ -206,7 +192,6 @@ section {
     padding: 0;
   }
 
-  /* Capture form mobile */
   .capture-form {
     flex-direction: column;
   }
@@ -217,7 +202,6 @@ section {
     padding: 20px 24px 32px;
   }
 
-  /* Gallery mobile */
   .gallery-item {
     width: 300px;
   }
@@ -225,12 +209,10 @@ section {
     height: 200px;
   }
 
-  /* Trust signals mobile */
   .logo-item {
     font-size: 16px;
   }
 
-  /* Step cards mobile */
   .step-card {
     padding: 24px 20px;
   }
@@ -238,7 +220,6 @@ section {
     font-size: 13px;
   }
 
-  /* Footer mobile */
   .footer-links {
     gap: 32px;
   }
@@ -246,4 +227,3 @@ section {
     margin-bottom: 16px;
   }
 }
-

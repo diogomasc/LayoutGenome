@@ -1,15 +1,14 @@
-/* ===========================
-   RESET — Base Resets
-   =========================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-glow) var(--bg-primary);
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px; /* Offset for the fixed navbar */
+  scroll-padding-top: 100px;
 }
 
 body.dark-theme {
@@ -23,7 +22,6 @@ body.dark-theme {
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -39,7 +37,7 @@ body.dark-theme {
     var(--accent-secondary)
   );
   border-radius: 10px;
-  border: 3px solid var(--bg-primary); /* Padding effect */
+  border: 3px solid var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -48,10 +46,4 @@ body.dark-theme {
     var(--accent-secondary),
     var(--accent-tertiary)
   );
-}
-
-/* Firefox support (limited styling) */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-glow) var(--bg-primary);
 }

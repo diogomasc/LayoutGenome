@@ -1,7 +1,3 @@
-/* ===========================
-   HOME PAGE — Section-specific Styles
-   =========================== */
-
 /* Hero */
 .hero {
   padding: 160px 0 80px;
@@ -189,7 +185,9 @@
   font-weight: 500;
   font-size: 18px;
   opacity: 0.75;
-  transition: opacity 0.3s, filter 0.3s;
+  transition:
+    opacity 0.3s,
+    filter 0.3s;
 }
 
 .logo-item:hover {
@@ -197,7 +195,6 @@
   color: var(--text-primary);
 }
 
-/* Todas as imagens de logo: tamanho aumentado */
 .logo-item img {
   width: 32px;
   height: 32px;
@@ -205,9 +202,6 @@
   flex-shrink: 0;
 }
 
-/* SVGs pretos (sem "-color" no nome) → brancos com filter */
-/* cursor.svg, windsurf.svg, githubcopilot.svg usam fill="currentColor"
-   que em <img> renderiza como preto — invertemos para branco */
 .logo-item img[src*="cursor"],
 .logo-item img[src*="windsurf"],
 .logo-item img[src*="githubcopilot"] {
@@ -221,12 +215,10 @@
   opacity: 1;
 }
 
-/* SVGs com cor (-color) → manter visual original, sem filtro */
 .logo-item img[src*="-color"] {
   filter: none;
   opacity: 1;
 }
-
 
 /* Problem vs Solution */
 .comparison-grid {
@@ -633,7 +625,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 350px; /* Fixed width for horizontal scrolling */
+  width: 350px;
   flex-shrink: 0;
 }
 
@@ -803,7 +795,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* overflow hidden removed to avoid cutting blur effect */
 }
 
 .capture-card {
@@ -862,7 +853,7 @@
 .capture-status-dot {
   width: 8px;
   height: 8px;
-  background: #34d399; /* Emerald */
+  background: #34d399;
   border-radius: 50%;
   position: relative;
 }
@@ -987,7 +978,7 @@
   position: absolute;
   width: 600px;
   height: 600px;
-  background: rgba(59, 130, 246, 0.08); /* Reduced opacity for smoother blend */
+  background: rgba(59, 130, 246, 0.08);
   filter: blur(120px);
   border-radius: 50%;
   pointer-events: none;
@@ -1003,7 +994,7 @@
 .ambient-blob-2 {
   bottom: -20%;
   right: -20%;
-  background: rgba(139, 92, 246, 0.08); /* Purplish, reduced opacity */
+  background: rgba(139, 92, 246, 0.08);
   animation-delay: -4s;
 }
 
@@ -1069,31 +1060,21 @@
   font-size: 14px;
 }
 
-/* ================================================
-   RESPONSIVIDADE HOME — Media Queries
-   (home.css carrega por último — overrides aqui têm
-   precedência correta sobre o layout.css)
-   ================================================ */
-
-/* ================================================
-   TABLET (≤ 991px)
-   ================================================ */
+/* Responsive: Tablet */
 @media (max-width: 991px) {
-
-  /* --- Hero: coluna única, centralizado --- */
   .hero-container {
     grid-template-columns: 1fr;
     text-align: center;
     justify-items: center;
     gap: 32px;
-    padding: 0 24px; /* mantém o espaçamento lateral igual ao restante do site */
+    padding: 0 24px;
     box-sizing: border-box;
   }
   .hero-content,
   .hero-visual {
     min-width: 0;
     width: 100%;
-    max-width: 600px;  /* impede que fique excessivamente largo em tablets */
+    max-width: 600px;
   }
   .hero-title {
     font-size: 42px;
@@ -1101,7 +1082,9 @@
     word-break: break-word;
     overflow-wrap: break-word;
   }
-  .hero-title br { display: none; }
+  .hero-title br {
+    display: none;
+  }
   .hero-subtitle {
     margin: 0 auto 32px;
     max-width: 560px;
@@ -1117,9 +1100,10 @@
     flex-direction: column;
     gap: 4px;
   }
-  .dot-separator { display: none; }
+  .dot-separator {
+    display: none;
+  }
 
-  /* Hero Visual: limitar tamanho do code-window em tablet */
   .hero-visual {
     max-width: 600px;
     margin: 0 auto;
@@ -1128,13 +1112,11 @@
     transform: none !important;
   }
 
-  /* --- Problem/Solution: coluna única --- */
   .comparison-grid {
     grid-template-columns: 1fr !important;
     gap: 20px;
   }
 
-  /* --- Steps: coluna vertical --- */
   .steps-container {
     flex-direction: column;
     align-items: stretch;
@@ -1147,14 +1129,16 @@
     flex: none;
   }
 
-  /* --- Pricing --- */
   .pricing-box {
     padding: 48px 32px;
   }
-  .pricing-content h2 { font-size: 36px; }
-  .amount { font-size: 64px; }
+  .pricing-content h2 {
+    font-size: 36px;
+  }
+  .amount {
+    font-size: 64px;
+  }
 
-  /* --- Footer --- */
   .footer-container {
     flex-direction: column;
     gap: 40px;
@@ -1166,17 +1150,12 @@
   }
 }
 
-/* ================================================
-   MOBILE (≤ 768px)
-   ================================================ */
+/* Responsive: Mobile */
 @media (max-width: 768px) {
-
-  /* --- Hero --- */
   .hero {
     padding: 88px 0 56px;
     min-height: auto;
   }
-  /* Garante distribuição centralizada de todo o conteúdo do hero em mobile */
   .hero-content {
     display: flex;
     flex-direction: column;
@@ -1195,11 +1174,9 @@
     margin-bottom: 32px;
     max-width: 460px;
   }
-  /* Esconde o code-window no mobile */
   .hero-visual {
     display: none;
   }
-  /* Form e botão ocupam toda a largura disponível */
   .hero-action {
     width: 100%;
   }
@@ -1225,7 +1202,6 @@
     text-align: center;
   }
 
-  /* --- Trust signals --- */
   .trust-signals {
     padding: 40px 0;
   }
@@ -1238,7 +1214,6 @@
     gap: 10px;
   }
 
-  /* --- Problem/Solution --- */
   .problem-solution .section-header h2 {
     font-size: 28px;
   }
@@ -1263,7 +1238,6 @@
     font-size: 20px;
   }
 
-  /* --- How it Works --- */
   .how-it-works .section-header h2 {
     font-size: 28px;
   }
@@ -1280,7 +1254,6 @@
     padding: 28px 20px;
   }
 
-  /* --- Gallery --- */
   .gallery-header h2 {
     font-size: 28px;
   }
@@ -1288,19 +1261,11 @@
     font-size: 16px;
   }
 
-  /* --- Benefits table --- */
-  /* --- Benefits table: transforma em cards empilhados ---
-     Cada row da tabela vira um card:
-       1ª cell = feature (título do card)
-       2ª cell = Concorrentes
-       3ª cell = LayoutGenome (destaque)
-     Sem alterar o HTML.
-  -------------------------------------------------- */
+  /* Benefits table (stacked cards) */
   .benefits .section-header h2 {
     font-size: 28px;
   }
 
-  /* Remove o wrapper de scroll — não precisamos mais */
   .comparison-table-wrapper {
     overflow: visible;
     border: none;
@@ -1308,7 +1273,6 @@
     background: transparent;
   }
 
-  /* Faz todos os elementos de tabela se comportarem como block */
   .comparison-table,
   .comparison-table thead,
   .comparison-table tbody,
@@ -1319,12 +1283,10 @@
     width: 100%;
   }
 
-  /* Esconde o header da tabela (substituído pelos ::before labels) */
   .comparison-table thead {
     display: none;
   }
 
-  /* Cada row = um card */
   .comparison-table tbody tr {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
@@ -1333,7 +1295,6 @@
     overflow: hidden;
   }
 
-  /* Célula 1: nome da funcionalidade → "título" do card */
   .comparison-table tbody td:nth-child(1) {
     background: var(--bg-tertiary);
     border-bottom: 1px solid var(--border-color);
@@ -1346,7 +1307,6 @@
     white-space: normal;
   }
 
-  /* Célula 2: Concorrentes */
   .comparison-table tbody td:nth-child(2) {
     border-bottom: 1px solid var(--border-color);
     color: var(--text-secondary);
@@ -1365,7 +1325,6 @@
     font-size: 16px;
   }
 
-  /* Célula 3: LayoutGenome → destaque */
   .comparison-table tbody td:nth-child(3),
   .comparison-table tbody td.highlight {
     background: rgba(59, 130, 246, 0.06);
@@ -1387,7 +1346,6 @@
     font-size: 16px;
   }
 
-  /* --- Testimonials --- */
   .testimonials .section-header h2 {
     font-size: 28px;
   }
@@ -1395,7 +1353,6 @@
     font-size: 15px;
   }
 
-  /* --- Pricing --- */
   .pricing {
     padding: 48px 0 80px;
   }
@@ -1412,17 +1369,25 @@
     font-size: 15px;
     margin-bottom: 28px;
   }
-  .amount { font-size: 56px; }
-  .currency { font-size: 20px; }
-  .price-context { font-size: 13px; margin-bottom: 28px; }
+  .amount {
+    font-size: 56px;
+  }
+  .currency {
+    font-size: 20px;
+  }
+  .price-context {
+    font-size: 13px;
+    margin-bottom: 28px;
+  }
   .btn-large {
     padding: 14px 24px;
     font-size: 16px;
     max-width: 100%;
   }
-  .guarantee { font-size: 13px; }
+  .guarantee {
+    font-size: 13px;
+  }
 
-  /* --- FAQ --- */
   .faq .section-header h2 {
     font-size: 28px;
   }
@@ -1434,7 +1399,6 @@
     font-size: 14px;
   }
 
-  /* --- Capture/Newsletter --- */
   .capture-section {
     padding: 80px 0 60px;
   }
@@ -1458,7 +1422,6 @@
     justify-content: center;
   }
 
-  /* --- Footer --- */
   .footer {
     padding: 60px 0 32px;
   }
@@ -1467,7 +1430,6 @@
     gap: 32px;
     margin-bottom: 40px;
   }
-  /* Footer links: 3 colunas lado a lado ainda funcionam melhor que 1 coluna no mobile */
   .footer-links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1483,44 +1445,49 @@
   }
 }
 
-/* ================================================
-   SMALL MOBILE (≤ 480px)
-   ================================================ */
+/* Responsive: Small Mobile */
 @media (max-width: 480px) {
-  /* --- Hero --- */
-  .hero-title { font-size: 28px; }
-  .hero-subtitle { font-size: 14px; }
-  .badge-custom { font-size: 11px; }
+  .hero-title {
+    font-size: 28px;
+  }
+  .hero-subtitle {
+    font-size: 14px;
+  }
+  .badge-custom {
+    font-size: 11px;
+  }
 
-  /* --- Sections text --- */
   .comparison-grid {
     grid-template-columns: 1fr !important;
   }
 
+  .pricing-box {
+    padding: 32px 16px;
+  }
+  .pricing-content h2 {
+    font-size: 24px;
+  }
+  .amount {
+    font-size: 48px;
+  }
 
-  /* --- Pricing --- */
-  .pricing-box { padding: 32px 16px; }
-  .pricing-content h2 { font-size: 24px; }
-  .amount { font-size: 48px; }
+  .capture-title {
+    font-size: 26px;
+  }
 
-  /* --- Capture --- */
-  .capture-title { font-size: 26px; }
-
-  /* --- Footer links: coluna única em telas bem pequenas --- */
   .footer-links {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 }
 
-
-/* Roadmap / Current Phase */
+/* Roadmap */
 .roadmap-current-phase {
   margin-top: 60px;
   padding: 48px;
   text-align: left;
   border-radius: 24px;
-  background: var(--bg-secondary); /* Ensure it has a background even if glow-border has one */
+  background: var(--bg-secondary);
 }
 
 .phase-badge {

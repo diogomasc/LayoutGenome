@@ -1,7 +1,3 @@
-// ===========================
-// EXTRACTOR — Integração com backend de download + DNA
-// ===========================
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".extract-form");
   const urlInput = document.querySelector(".url-input");
@@ -12,22 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  let currentSessionId = null;
-  let eventSource = null;
-  let isProcessing = false;
-  let modalShown = false;
+  const state = {
+    eventSource: null,
+    isProcessing: false,
+    modalShown: false,
+  };
 
-  // Elements
-  const logTerminal = document.getElementById("log-terminal");
-  const statusMeta = document.getElementById("status-meta");
-  const successModal = document.getElementById("success-modal");
-  const modalDownloadBtn = document.getElementById("modal-download-btn");
-  const modalCloseBtn = document.getElementById("modal-close-btn");
+  const ui = {
+    logTerminal: document.getElementById("log-terminal"),
+    statusMeta: document.getElementById("status-meta"),
+    successModal: document.getElementById("success-modal"),
+    modalDownloadBtn: document.getElementById("modal-download-btn"),
+    modalCloseBtn: document.getElementById("modal-close-btn"),
+  };
 
-  // Determine base URL for backend connection
-  const getBackendBase = () => {
-    // Se estivermos abrindo o arquivo localmente ou via outro servidor dev,
-    // forçamos a conexão com o porto standard do Flask (5001)
+  const config = {
+    iframeCleanupDelayMs: 15000,
+    modalOpenDelayMs: 350,
+    modalCloseUiResetDelayMs: 500,
+  };
+
+  const resolveBackendBaseUrl = () => {
     if (
       globalThis.location.protocol === "file:" ||
       (globalThis.location.hostname !== "localhost" &&
@@ -36,9 +37,25 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       return "http://localhost:5001";
     }
-    return ""; // Relativo
+    return "";
   };
-  const BACKEND_URL = getBackendBase();
+  const BACKEND_URL = resolveBackendBaseUrl();
+
+  const addLog = (message, type = "") => {
+    if (!ui.logTerminal) return;
+
+    const entry = document.createElement("div");
+    entry.className = `log-entry ${type}`;
+    entry.textContent = message;
+    ui.logTerminal.appendChild(entry);
+    ui.logTerminal.scrollTop = ui.logTerminal.scrollHeight;
+  };
+
+  const clearLogs = () => {
+    if (ui.logTerminal) {
+      ui.logTerminal.innerHTML = "";
+    }
+  };
 
   const triggerDirectDownload = (sessionId) => {
     const downloadUrl = `${BACKEND_URL}/download-file/${sessionId}?t=${Date.now()}`;
@@ -48,25 +65,24 @@ document.addEventListener("DOMContentLoaded", () => {
     iframe.src = downloadUrl;
     document.body.appendChild(iframe);
 
-    // Limpeza do iframe após disparar o download.
     setTimeout(() => {
       iframe.remove();
-    }, 15000);
+    }, config.iframeCleanupDelayMs);
 
     addLog("📥 Download enviado para o navegador.", "success");
   };
 
   const setLoading = (loading) => {
-    isProcessing = loading;
-    if (submitButton) submitButton.disabled = loading;
-    if (urlInput) urlInput.disabled = loading;
+    state.isProcessing = loading;
+    submitButton.disabled = loading;
+    urlInput.disabled = loading;
 
     if (loading) {
       buttonTextSpan.textContent = "Processando...";
-      if (statusMeta) statusMeta.style.display = "none";
-      if (logTerminal) {
-        logTerminal.classList.add("active");
-        logTerminal.innerHTML = "";
+      if (ui.statusMeta) ui.statusMeta.style.display = "none";
+      if (ui.logTerminal) {
+        ui.logTerminal.classList.add("active");
+        clearLogs();
       }
       addLog("🚀 Iniciando extração do site...");
     } else {
@@ -75,58 +91,44 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const showModal = (sessionId) => {
-    if (!successModal || !modalDownloadBtn || modalShown) return;
+    if (!ui.successModal || !ui.modalDownloadBtn || state.modalShown) return;
 
-    modalShown = true;
-    modalDownloadBtn.href = `${BACKEND_URL}/download-file/${sessionId}`;
-    modalDownloadBtn.removeAttribute("download");
-    successModal.classList.add("active");
+    state.modalShown = true;
+    ui.modalDownloadBtn.href = `${BACKEND_URL}/download-file/${sessionId}`;
+    ui.modalDownloadBtn.removeAttribute("download");
+    ui.successModal.classList.add("active");
     document.body.style.overflow = "hidden";
   };
 
   const hideModal = () => {
-    if (!successModal) return;
-    successModal.classList.remove("active");
+    if (!ui.successModal) return;
+    ui.successModal.classList.remove("active");
     document.body.style.overflow = "";
-    modalShown = false;
+    state.modalShown = false;
 
-    // Reset UI after closing
     setTimeout(() => {
-      if (statusMeta) statusMeta.style.display = "block";
-      if (logTerminal) logTerminal.classList.remove("active");
+      if (ui.statusMeta) ui.statusMeta.style.display = "block";
+      if (ui.logTerminal) ui.logTerminal.classList.remove("active");
       clearLogs();
-    }, 500);
+    }, config.modalCloseUiResetDelayMs);
   };
 
-  if (modalCloseBtn) modalCloseBtn.addEventListener("click", hideModal);
-  if (successModal) {
-    successModal.addEventListener("click", (e) => {
-      if (e.target === successModal) hideModal();
+  const closeEventStream = () => {
+    if (!state.eventSource) return;
+    state.eventSource.close();
+    state.eventSource = null;
+  };
+
+  if (ui.modalCloseBtn) ui.modalCloseBtn.addEventListener("click", hideModal);
+  if (ui.successModal) {
+    ui.successModal.addEventListener("click", (event) => {
+      if (event.target === ui.successModal) hideModal();
     });
   }
 
-  if (modalDownloadBtn) {
-    modalDownloadBtn.addEventListener("click", () => {
-      console.log("Iniciando download via modal...");
-    });
-  }
-
-  const addLog = (message, type = "") => {
-    if (!logTerminal) return;
-    const entry = document.createElement("div");
-    entry.className = `log-entry ${type}`;
-    entry.textContent = message;
-    logTerminal.appendChild(entry);
-    logTerminal.scrollTop = logTerminal.scrollHeight;
-  };
-
-  const clearLogs = () => {
-    if (logTerminal) logTerminal.innerHTML = "";
-  };
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (isProcessing) return;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (state.isProcessing) return;
 
     const url = urlInput.value.trim();
     if (!url) {
@@ -134,43 +136,45 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    modalShown = false; // Reset flag for new attempt
+    state.modalShown = false;
     setLoading(true);
 
-    fetch(`${BACKEND_URL}/start-download`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ url }),
-    })
-      .then(async (res) => {
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(text || `Erro ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        if (data.error) throw new Error(data.error);
-        currentSessionId = data.session_id;
-        connectSSE(currentSessionId);
-      })
-      .catch((err) => {
-        addLog(`❌ Erro: ${err.message}`, "error");
-        console.error("Fetch error:", err);
-        setLoading(false);
+    try {
+      const response = await fetch(`${BACKEND_URL}/start-download`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
       });
+
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(text || `Erro ${response.status}`);
+      }
+
+      const data = await response.json();
+      if (data.error || !data.session_id) {
+        throw new Error(data.error || "Sessão de download inválida");
+      }
+
+      connectSSE(data.session_id);
+    } catch (error) {
+      addLog(`❌ Erro: ${error.message}`, "error");
+      setLoading(false);
+    }
   });
 
   function connectSSE(sessionId) {
-    if (eventSource) eventSource.close();
-    eventSource = new EventSource(`${BACKEND_URL}/stream/${sessionId}`);
+    closeEventStream();
+    const source = new EventSource(`${BACKEND_URL}/stream/${sessionId}`);
+    state.eventSource = source;
 
-    eventSource.onmessage = (event) => {
+    source.onmessage = (event) => {
       addLog(event.data);
     };
 
-    eventSource.addEventListener("done", (event) => {
-      eventSource.close();
+    source.addEventListener("done", (event) => {
+      closeEventStream();
+
       if (event.data === "complete") {
         addLog("✅ Extração Completa!", "success");
 
@@ -184,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
           addLog("👉 Use o botão da modal para baixar manualmente.", "error");
         }
 
-        setTimeout(() => showModal(sessionId), 350);
+        setTimeout(() => showModal(sessionId), config.modalOpenDelayMs);
       } else {
         addLog("❌ Falha no processamento.", "error");
       }
@@ -192,8 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
       setLoading(false);
     });
 
-    eventSource.onerror = () => {
-      eventSource.close();
+    source.onerror = () => {
+      closeEventStream();
       setLoading(false);
     };
   }
