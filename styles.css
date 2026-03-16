@@ -551,11 +551,45 @@ section {
   letter-spacing: 0.05em;
 }
 
-.logos-row {
+.logos-marquee-mask {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 15%,
+    black 85%,
+    transparent
+  );
+}
+
+.logos-marquee-content {
   display: flex;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
+  gap: 80px;
+  width: max-content;
+  animation: scroll-left-logos 30s linear infinite;
+  padding: 10px 0;
+}
+
+@keyframes scroll-left-logos {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.logos-marquee-content:hover {
+  animation-play-state: paused;
 }
 
 .logo-item {
