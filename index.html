@@ -61,10 +61,16 @@
                             <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
                             <input type="url" placeholder="Cole a URL de um site incrível aqui..." required class="url-input">
                         </div>
-                        <button type="submit" class="btn btn-primary glow-effect">Extrair DNA Agora</button>
+                        <button type="submit" class="btn-lumina">
+                            <div class="glow-spin-wrapper">
+                                <div class="glow-spin"></div>
+                            </div>
+                            <div class="btn-inner-bg"></div>
+                            <span class="btn-text">Extrair DNA Agora</span>
+                        </button>
                     </form>
                     <div class="action-meta">
-                        <span>Sem necessidade de cartão de crédito</span>
+                        <span>Teste agora gratuitamente, sem necessidade de cartão de crédito</span>
                         <span class="dot-separator">•</span>
                         <span>Funciona em qualquer URL</span>
                     </div>
@@ -146,6 +152,7 @@
                         <li><span class="icon">❌</span> Sites estáticos, sem micro-interações ou motion.</li>
                         <li><span class="icon">❌</span> Fontes padrão quebradas e alinhamentos inconsistentes.</li>
                         <li><span class="icon">❌</span> Aparência de template barato e genérico.</li>
+                        <li><span class="icon">❌</span> IAs perdem o contexto quando o design é complexo.</li>
                     </ul>
                     <div class="visual-example bad-example">
                         <div class="skeleton-header"></div>
@@ -157,12 +164,13 @@
                 <!-- Solução -->
                 <div class="card solution-card glow-border">
                     <div class="card-tag tag-solution">O Ganho (LayoutGenome)</div>
-                    <h3>Design System Extraído</h4>
+                    <h3>Design System Extraído</h3>
                     <ul class="feature-list solution-list">
                         <li><span class="icon">✅</span> Qualidade de estúdio desde a primeira geração.</li>
                         <li><span class="icon">✅</span> Motion, hovers e transições 100% preservados.</li>
                         <li><span class="icon">✅</span> Variáveis, fontes e componentes consistentes.</li>
                         <li><span class="icon">✅</span> Velocidade extrema no Cursor/Lovable.</li>
+                        <li><span class="icon">✅</span> Combine componentes de diversos sites, criando suítes prontas para as IAs de código.</li>
                     </ul>
                     <div class="visual-example good-example">
                         <div class="mock-hero">
@@ -467,8 +475,13 @@
                         <span class="period">/mês</span>
                     </div>
                     <p class="price-context">O preço de duas pizzas para multiplicar seu faturamento e acabar com as dores de cabeça do CSS.</p>
-                    
-                    <a href="#" class="btn btn-primary btn-large">Assinar e Ganhar Superpoderes</a>
+                    <a href="#" class="btn-lumina btn-large" style="width: 100%; max-width: 400px; margin-bottom: 24px;">
+                        <div class="glow-spin-wrapper">
+                            <div class="glow-spin"></div>
+                        </div>
+                        <div class="btn-inner-bg"></div>
+                        <span class="btn-text">Assinar e Ganhar Superpoderes</span>
+                    </a>
                     <div class="guarantee">
                         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                         Garantia de 7 dias ou seu dinheiro de volta

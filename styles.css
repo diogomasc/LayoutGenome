@@ -144,14 +144,92 @@ h6 {
 }
 
 .btn-primary {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border: transparent;
+  background: var(--accent-primary);
+  color: #ffffff;
+  border: none;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+  background: #2563eb; /* Slightly darker/more vibrant blue on hover */
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3); /* Blue tinted shadow */
+}
+
+/* Lumina-inspired Button */
+.btn-lumina {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 14px 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  min-height: 56px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+  text-decoration: none;
+}
+
+.btn-lumina.btn-large {
+  padding: 16px 40px;
+  font-size: 18px;
+}
+
+.btn-lumina:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+.glow-spin-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.glow-spin {
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: conic-gradient(from 0deg, transparent 0deg, transparent 80deg, var(--accent-primary) 180deg, transparent 280deg, transparent 360deg);
+  animation: spin 3s linear infinite;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.btn-lumina:hover .glow-spin {
+  opacity: 1;
+}
+
+.btn-inner-bg {
+  position: absolute;
+  inset: 2px;
+  background: #0f1624; /* Dark clean blue-ish gray matching the tech vibe */
+  border-radius: 10px;
+  z-index: 0;
+  transition: background 0.3s ease;
+}
+
+.btn-lumina:hover .btn-inner-bg {
+  background: #141d30; /* Lighter on hover */
+}
+
+.btn-text {
+  position: relative;
+  z-index: 10;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .glow-effect {
@@ -165,21 +243,17 @@ h6 {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(
-    45deg,
-    var(--accent-primary),
-    var(--accent-secondary),
-    var(--accent-tertiary)
-  );
+  background: var(--accent-primary);
   z-index: -1;
   border-radius: 10px;
-  filter: blur(8px);
-  opacity: 0.5;
-  transition: opacity 0.3s;
+  filter: blur(12px);
+  opacity: 0.4;
+  transition: opacity 0.3s, filter 0.3s;
 }
 
 .glow-effect:hover::before {
-  opacity: 0.8;
+  opacity: 0.7;
+  filter: blur(16px);
 }
 
 .btn-outline {
